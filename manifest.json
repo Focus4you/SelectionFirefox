@@ -1,0 +1,56 @@
+{
+  "description": "Generate a link to a selection",
+  "manifest_version": 2,
+  "name": "Selection",
+  "version": "1.0",
+
+  "homepage_url": "https://github.com/Focus4you/Selection",
+
+  "applications": {
+    "gecko": {
+      "id": "Selection@Focus4you.github",
+      "strict_min_version": "57.0a1"
+    }
+  },
+  
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "<all_urls>",
+    "*://*/*"
+  ],
+
+  "background": {
+    "scripts": ["scripts/background.js"]
+  },
+
+    "content_scripts": [
+      {
+        "matches": ["*://*/*"],
+        "js": ["scripts/content.js"]
+      }
+    ],
+
+    "browser_action": {
+        "browser_style": true,
+        "default_icon": "buttons/show_images_show_videos.svg",
+        "default_title": "Link to Selection. New tabs.",
+        "default_popup": "popup.html?type=default"
+    },
+
+    "page_action": {
+      "browser_style": true,
+      "default_icon": "buttons/show_images_show_videos.svg",
+      "default_title": "Link to Selection. Current tab.", 
+      "default_popup": "popup.html?type=tab",
+      "show_matches": ["*://*/*"]
+    },
+
+    "icons": {
+          "48": "buttons/show_images_show_videos.svg",
+          "96": "buttons/show_images_show_videos.svg"
+      },
+
+    "author": "Peter Kehl"
+}
